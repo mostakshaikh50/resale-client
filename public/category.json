@@ -1,0 +1,89 @@
+[
+    {
+      
+        "category_id": "01",
+        "CategoryName": "Dell Laptop",
+        "CategoryImg": "https://i.ibb.co/QFszWXN/dell-rz.png",
+        "description": "The best budget laptops just got cheaper. Dell have knocked the price of their all models",
+        "products": [
+            {
+                "name": "dell latitude 72804",
+                "img": "https://i.ibb.co/d2NWD6z/dell-latitude-7280-rz.jpg",
+                "location": "North End Avenue, Portsmouth, UK",
+                "resalePrice": "£300",
+                "originalPrice": "£700",
+                "phone": "0795960599",
+                "use": "2 years",
+                "details": "We inspect every detail of every laptop before shipping it to ensure that it is completely functional and ready to use."
+            },
+            {
+                "name": "dell vostro 153515",
+                "img": "https://i.ibb.co/jb7nrSQ/dell-vostro-15-rz.jpg",
+                "location": "Thorncroft road, Portsmouth, UK",
+                "resalePrice": "£500",
+                "originalPrice": "£700",
+                "phone": "0795960545",
+                "use": "1 years",
+                "details": "Dell Vostro laptops are designed for budget-conscious professionals in business, education, and the public sector who are driven to produce results and strive for efficiency."
+            }            
+        ]
+    },
+    {
+        
+        "category_id": "02",
+        "CategoryName": "HP Laptop",
+        "CategoryImg": "https://i.ibb.co/09z24YM/hp-560x450-rz.png",
+        "description": "The chepest budget you can get your best HP laptops. HP have knocked the price of their all models",
+        "products": [
+            {
+                "name": "hp probook 450",
+                "img": "https://i.ibb.co/P4143G8/hp-probook-450-rz.jpg",
+                "location": "Fratton road, Portsmouth, UK",
+                "resalePrice": "£400",
+                "originalPrice": "£750",
+                "phone": "0795960559",
+                "use": "1.5 years",
+                "details": "Most HP ProBooks also feature the Intel UHD Graphics 620 card. This can make a big difference in quality for your projects."
+            },
+            {
+                "name": "hp chromebook",
+                "img": "https://i.ibb.co/Nj6BXFQ/hp-chrome-book.jpg",
+                "location": "Totenham road, Portsmouth, UK",
+                "resalePrice": "£300",
+                "originalPrice": "£600",
+                "phone": "0795960455",
+                "use": "3 years",
+                "details": "HP Chromebooks are a new type of laptop computer for everything you love to do, plus the best of Chrome and Android apps."
+            }            
+        ]
+    },
+    {
+       
+        "category_id": "03",
+        "CategoryName": "Lenevo Laptop",
+        "CategoryImg": "https://i.ibb.co/R3fv92g/think-pad.webp",
+        "description": "The best quality laptops with your budget. Lenevo have knocked the price of their all models",
+        "products": [
+            {
+                "name": "lenevo thinkpad",
+                "img": "https://i.ibb.co/8jp8mVX/lenevo-thinkpad-500x313.webp",
+                "location": "London, Portsmouth, UK",
+                "resalePrice": "£300",
+                "originalPrice": "£700",
+                "phone": "0795960599",
+                "use": "2 years",
+                "details": "Lenovo ThinkPad devices are renowned for relentless innovation, trusted quality, and purposeful design—to help your business succeed."
+            },
+            {
+                "name": "lenevo v15",
+                "img": "https://i.ibb.co/Gsm47Y3/lenevo-v15-rz.jpg",
+                "location": "Wadham road, Portsmouth, UK",
+                "resalePrice": "£400",
+                "originalPrice": "£700",
+                "phone": "0795960545",
+                "use": "2.5 years",
+                "details": "Dell Vostro laptops are designed for budget-conscious professionals in business, education, and the public sector who are driven to produce results and strive for efficiency."
+            }            
+        ]
+    }
+]
