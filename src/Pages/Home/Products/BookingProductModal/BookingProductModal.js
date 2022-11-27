@@ -74,7 +74,7 @@ const BookingProductModal = ({ bookProducts, setBookProducts }) => {
 
                         <input name='email' disabled readOnly defaultValue={user?.email} type="email" placeholder="Email Address" className="input input-bordered input-primary w-full " />
                         
-                        <input name='resalePrice' disabled value={`$${bookProducts.brands.resalePrice}`} className="input input-bordered input-primary w-full " />
+                        <input name='resalePrice' disabled value={`${bookProducts.brands.resalePrice}`} className="input input-bordered input-primary w-full " />
 
                         <input name='phone' type="text" placeholder="Phone" className="input input-bordered input-primary w-full " />
                         
