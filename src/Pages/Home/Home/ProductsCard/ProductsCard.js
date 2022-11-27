@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const ProductsCard = ({ product }) => {
+const ProductsCard = ({ product, setBookProducts }) => {
    // console.log(product.products[0].name);
     //console.log(product.products[1].name);
     console.log(product);
@@ -17,11 +17,18 @@ const ProductsCard = ({ product }) => {
                 <p className='text-lg'><span className='font-bold'>Location: </span>{product.brands.location}</p>
                 <p className='text-lg'><span className='font-bold'>Year of Use: </span>{product.brands.use}</p>
                 <p className='text-lg'><span className='font-bold'>Description: </span><span className=' font-serif '>{product.brands.details.slice(0, 100)}</span></p>
+                
                 <div className="card-actions justify-end">
+                        <label onClick={() => setBookProducts(product)} htmlFor="booking-modal" className="badge badge-outline btn btn-sm btn-primary">Book Now </label>
+
+
+
+                    </div>
+                {/* <div className="card-actions justify-end">
                     <Link to={`/booking/${product._id}`}>
                         <button className="btn btn-primary">Book Now</button>
                     </Link>
-                </div>
+                </div> */}
             </div>
         </div>
 
