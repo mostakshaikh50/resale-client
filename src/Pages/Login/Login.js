@@ -1,3 +1,4 @@
+import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -13,6 +14,7 @@ const Login = () => {
     //const [token] = useToken(loginUserEmail);
     const location = useLocation();
     const navigate = useNavigate();
+
 
     const from = location.state?.from?.pathname || '/';
 
@@ -38,7 +40,7 @@ const Login = () => {
     return (
         <div className='h-[800px] flex justify-center item-center'>
           <div className='w-96 p-7'>
-                <h2 className='text-xl text-center'>Login Now</h2>
+                <h2 className='text-xl text-center mt-36 font-bold'>Login Now</h2>
                 <form onSubmit={handleSubmit(handleLogin)}>
                     <div className="form-control w-full max-w-xs">
                         <label className="label"><span className="label-text">Email</span></label>
@@ -64,8 +66,8 @@ const Login = () => {
                     </div>
                 </form>
                 <p>New to Laptop Deals ? <Link className='text-green-700 font-bold' to="/signup">Create New Account</Link></p>
-                 <div className='divider'>OR</div>
-                 <button className='btn btn-outline w-full'>CONTINUE WITH GOOGLE</button>
+                 {/* <div className='divider'>OR</div>
+                 <button className='btn btn-outline w-full'>CONTINUE WITH GOOGLE</button> */}
             </div>
 
         </div>

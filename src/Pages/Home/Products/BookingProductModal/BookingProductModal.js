@@ -66,9 +66,6 @@ const BookingProductModal = ({ bookProducts, setBookProducts }) => {
                     <form onSubmit={handleSubmitBooking} action="" className='grid grid-cols-1 gap-3'>
 
                         <input name='productName' disabled value={bookProducts.brands.name} type="text" placeholder="Your Name" className="input input-bordered input-primary w-full " />
-
-                        {/* <input name='date' disabled value={bookProducts.brands.published_date} type="text" placeholder="select date" className="input input-bordered input-primary w-full " /> */}
-
                         
                         <input name='name' disabled type="text" defaultValue={user?.displayName} placeholder="Your Name" className="input input-bordered input-primary w-full " />
 
