@@ -4,7 +4,7 @@ import logo from '../../../assets/logo/logos.jpg'
 
 const Footer = () => {
     return (
-        <footer className="footer p-10 bg-neutral rounded-xl text-neutral-content">
+        <footer className="footer p-10 bg-neutral rounded-xl text-neutral-content mt-7">
             <div>
                 <img className='w-30 h-20 p-3' src={logo} alt="" />
                 <p>Laptop Deals Ltd.<br />Providing Reliable Services Since 2015</p>

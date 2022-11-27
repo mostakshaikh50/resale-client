@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../contexts/AuthProvider';
 
     
 
 const SignUp = () => {
     const { register, formState: { errors }, handleSubmit } = useForm('');
-    //const { createUser, updateUser } = useContext(AuthContext);
+    const { createUser, updateUser } = useContext(AuthContext);
     const [signUpError, setSignUpError] = useState('');
     const [createdUserEmail, setCreatedUserEmail] = useState('');
     //const [token] = useToken(createdUserEmail);
@@ -17,27 +19,27 @@ const SignUp = () => {
     // }
 
 const handleSignUp = data => {
-    //console.log(data);
+    console.log(data);
     setSignUpError('');
-    // createUser(data.email, data.password)
-    //     .then(result => {
-    //         const user = result.user;
-    //         //console.log(user);
-    //         toast('User Created Successfully!');
-    //         const userInfo = {
-    //             displayName: data.name
-    //         }
-    //         updateUser(userInfo)
-    //             .then(() => {
-    //                 console.log(data);
-    //                 saveUser(data.name, data.email);
-    //             })
-    //             .catch(err => console.log(err));
-    //     })
-    //     .catch(error => {
-    //         console.log(error);
-    //         setSignUpError(error.message);
-    //     });
+    createUser(data.email, data.password)
+        .then(result => {
+            const user = result.user;
+            //console.log(user);
+            toast('User Created Successfully!');
+            const userInfo = {
+                displayName: data.name
+            }
+            updateUser(userInfo)
+                .then(() => {
+                    console.log(data);
+                    //saveUser(data.name, data.email);
+                })
+                .catch(err => console.log(err));
+        })
+        .catch(error => {
+            console.log(error);
+            setSignUpError(error.message);
+        });
 }
     return (
         <div className='h-[800px] flex justify-center items-center'>
@@ -72,9 +74,9 @@ const handleSignUp = data => {
                     </div>
 
                     <div className="form-control w-full max-w-xs">
-                            <label className="label"> <span className="label-text">Position </span></label>
+                            <label className="label"> <span className="label-text">Category </span></label>
                             <select
-                                {...register('position')}
+                                {...register('category')}
                                 className="select input-bordered w-full max-w-xs">                            
                                 <option value="buyer" selected>Buyer</option>
                                 <option value="seller">Seller</option>
