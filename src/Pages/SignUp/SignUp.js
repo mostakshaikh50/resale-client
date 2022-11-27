@@ -34,7 +34,7 @@ const handleSignUp = data => {
             updateUser(userInfo)
                 .then(() => {
                     console.log(data);
-                    //saveUser(data.name, data.email);
+                    saveUser(data.name, data.email, data.position);
                 })
                 .catch(err => console.log(err));
         })
@@ -52,6 +52,35 @@ const handleGoogleSignIn = () => {
             navigate("/");
         })
         .catch(error => console.error(error));
+}
+
+const saveUser = (name, email, position ) => {
+    const user = { name, email, position };
+
+    fetch('http://localhost:5000/users', {
+        method: 'POST',
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify(user)
+    })
+        .then(res => res.json())
+        .then(data => {
+            setCreatedUserEmail(email);
+            navigate("/");
+        })
+
+    // const getUserToken = email =>{
+    //     fetch(`http://localhost:5000/jwt?email=${email}`)
+    //     .then(res => res.json())
+    //     .then(data => {
+    //         if(data.accessToken){
+    //             localStorage.setItem('accessToken', data.accessToken);
+    //             //navigate('/');
+    //         }
+    //     })
+    // }
+
 }
     return (
         <div className='h-[800px] flex justify-center items-center'>
@@ -86,12 +115,12 @@ const handleGoogleSignIn = () => {
                     </div>
 
                     <div className="form-control w-full max-w-xs">
-                            <label className="label"> <span className="label-text">Category </span></label>
+                            <label className="label"> <span className="label-text">Position</span></label>
                             <select
-                                {...register('category')}
+                                {...register('position')}
                                 className="select input-bordered w-full max-w-xs">                            
-                                <option value="buyer" selected>Buyer</option>
-                                <option value="seller">Seller</option>
+                                <option selected>Buyer</option>
+                                <option>Seller</option>
 
                             </select>
                         </div>
