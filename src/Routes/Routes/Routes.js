@@ -1,6 +1,9 @@
 import {createBrowserRouter} from "react-router-dom"
+import DashboardLayout from "../../Layout/DashboardLayout";
 import Main from "../../Layout/Main"
 import Dashboard from "../../Pages/Dashboard/Dashboard/Dashboard";
+import MyOrders from "../../Pages/Dashboard/MyOrders/MyOrders";
+import MyProducts from "../../Pages/Dashboard/MyProducts/MyProducts";
 import Home from "../../Pages/Home/Home/Home"
 import Products from "../../Pages/Home/Products/Products";
 import Login from "../../Pages/Login/Login";
@@ -41,7 +44,13 @@ import PrivateRoute from "../PrivateRoute/PrivateRoute";
     },
     {
         path: '/dashboard',
-        element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>
+        element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
+        children: [
+            {
+                path:'/dashboard',
+                element: <MyOrders></MyOrders>
+            }
+        ]
     }
 ])
 

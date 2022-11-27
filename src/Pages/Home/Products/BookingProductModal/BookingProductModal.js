@@ -14,6 +14,7 @@ const BookingProductModal = ({ bookProducts, setBookProducts }) => {
         const productsName = form.productName.value
         const price = form.resalePrice.value
         const location = form.location.value
+        const ProductImg = bookProducts.brands.img
         //const date = form.date.value
         // console.log(name, email, phone);
 
@@ -25,7 +26,8 @@ const BookingProductModal = ({ bookProducts, setBookProducts }) => {
             phone,
             productsName,
             price,
-            location
+            location,
+            ProductImg
         }
 
         fetch('http://localhost:5000/bookings', {
