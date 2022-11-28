@@ -52,18 +52,13 @@ import PrivateRoute from "../PrivateRoute/PrivateRoute";
             },
             {
                 path:'/dashboard/addproduct',
-                element: <AddProduct></AddProduct>
+                element: <PrivateRoute><AddProduct></AddProduct></PrivateRoute>
             },
             {
                 path:'/dashboard/myproduct',
-                element: <MyProducts></MyProducts>
+                element: <PrivateRoute><MyProducts></MyProducts></PrivateRoute>
             }
-            // {
-            //     path: '/dashboard/payment/:id',
-            //     element: <AdminRoute><Payments></Payments></AdminRoute>,
-            //     loader: ({params}) => fetch(`http://localhost:5000/bookings/${params.id}`)
-
-            // }
+            
         ]
     }
 ])
