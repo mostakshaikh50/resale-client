@@ -7,7 +7,7 @@ import Loading from '../../Shared/Loading/Loading';
 const MyOrders = () => {
     const { user } = useContext(AuthContext);
 
-    const url = `http://localhost:5000/bookings?email=${user?.email}`;
+    const url = `https://laptop-resale-server-three.vercel.app/bookings?email=${user?.email}`;
 
     const { data: bookings = [], isLoading } = useQuery({
         queryKey: ['bookings', user?.email],
@@ -41,7 +41,7 @@ const MyOrders = () => {
                     </thead>
                     <tbody>
                         {
-                            bookings?.map((booking, i) => <tr key={booking._id} className='hover'>
+                            bookings?.length && bookings.map((booking, i) => <tr key={booking?._id} className='hover'>
                                 <th>{i + 1}</th>
                                 
                                 <td><div className="avatar">

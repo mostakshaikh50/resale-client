@@ -14,7 +14,7 @@ const MyProducts = () => {
         queryKey: ['doctors'],
         queryFn: async () => {
             try {
-                const res = fetch('http://localhost:5000/addproduct', {
+                const res = fetch('https://laptop-resale-server-three.vercel.app/addproduct', {
                     headers: {
                         authorization: `bearer ${localStorage.getItem('accessToken')}`
                     }
@@ -30,7 +30,7 @@ const MyProducts = () => {
 
     const handleDeleteProduct = product => {
         console.log(product);
-        fetch(`http://localhost:5000/addproduct/${product._id}`, {
+        fetch(`https://laptop-resale-server-three.vercel.app/addproduct/${product._id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`

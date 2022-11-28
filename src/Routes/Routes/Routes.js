@@ -36,7 +36,7 @@ import PrivateRoute from "../PrivateRoute/PrivateRoute";
             {
                 path: '/products/:id',
                 element: <Products></Products>,
-                loader: ({ params }) => fetch(`http://localhost:5000/category/${params.id}`)
+                loader: ({ params }) => fetch(`https://laptop-resale-server-three.vercel.app/category/${params.id}`)
             }
             
         ]
