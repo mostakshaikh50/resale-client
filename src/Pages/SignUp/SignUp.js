@@ -1,3 +1,4 @@
+import { useQuery } from '@tanstack/react-query';
 import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -15,14 +16,16 @@ const SignUp = () => {
     const [token] = useToken(createdUserEmail);
      const navigate = useNavigate();
 
+
      const googleAuthProvider = new GoogleAuthProvider();
 
     if (token) {
         navigate('/');
     }
 
+
 const handleSignUp = data => {
-    console.log(data);
+    //console.log(data);
     setSignUpError('');
     createUser(data.email, data.password)
         .then(result => {
@@ -34,7 +37,7 @@ const handleSignUp = data => {
             }
             updateUser(userInfo)
                 .then(() => {
-                    console.log(data);
+                    //console.log(data);
                     saveUser(data.name, data.email, data.position);
                 })
                 .catch(err => console.log(err));
@@ -45,11 +48,15 @@ const handleSignUp = data => {
         });
 }
 
-const handleGoogleSignIn = () => {
+const handleGoogleSignIn = () => {  
+
+
     googleProviderLogin(googleAuthProvider)
         .then(result => {
             const user = result.user;
-            saveUser(user.displayName, user.email, "Buyer");  
+            saveUser(user.displayName, user.email, "Buyer");
+            
+              
             setCreatedUserEmail(user.email);          
             
         })
@@ -110,7 +117,7 @@ const saveUser = (name, email, position ) => {
                             <select
                                 {...register('position')}
                                 className="select input-bordered w-full max-w-xs">                            
-                                <option selected>Buyer</option>
+                                <option defaultValue={"Buyer"}>Buyer</option>
                                 <option>Seller</option>
 
                             </select>

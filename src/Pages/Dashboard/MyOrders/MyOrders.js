@@ -51,7 +51,7 @@ const MyOrders = () => {
                                 </div>
                                 </td>
                                 <td>{booking.productsName}</td>
-                                <td>{booking.price}</td>                               
+                                <td>{booking.price}</td>
 
                                 <td>
                                     {
