@@ -38,7 +38,7 @@ const handleSignUp = data => {
             updateUser(userInfo)
                 .then(() => {
                     //console.log(data);
-                    saveUser(data.name, data.email, data.position);
+                    saveUser(data.name, data.email, data.role);
                 })
                 .catch(err => console.log(err));
         })
@@ -63,8 +63,9 @@ const handleGoogleSignIn = () => {
         .catch(error => console.error(error));
 }
 
-const saveUser = (name, email, position ) => {
-    const user = { name, email, position };
+const saveUser = (name, email, role ) => {
+
+    const user = { name, email, role };
 
     fetch('http://localhost:5000/users', {
         method: 'POST',
@@ -113,9 +114,9 @@ const saveUser = (name, email, position ) => {
                     </div>
 
                     <div className="form-control w-full max-w-xs">
-                            <label className="label"> <span className="label-text">Position</span></label>
+                            <label className="label"> <span className="label-text">Role</span></label>
                             <select
-                                {...register('position')}
+                                {...register("role")}
                                 className="select input-bordered w-full max-w-xs">                            
                                 <option defaultValue={"Buyer"}>Buyer</option>
                                 <option>Seller</option>

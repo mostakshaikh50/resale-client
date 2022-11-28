@@ -46,16 +46,17 @@ const MyOrders = () => {
                                 
                                 <td><div className="avatar">
                                     <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                                        <img src={booking.ProductImg} alt="" />
+                                        <img src={booking?.ProductImg} alt="" />
                                     </div>
                                 </div>
                                 </td>
-                                <td>{booking.productsName}</td>
-                                <td>{booking.price}</td>
+                                <td>{booking?.productsName}</td>
+                                <td>{booking?.price}</td>
 
                                 <td>
                                     {
-                                        booking.price && !booking.paid && <Link to={`/dashboard/payment/${booking._id}`}>
+                                        booking?.price && !booking?.paid && 
+                                        <Link to={`/dashboard/payment/${booking._id}`}>
                                             <button
                                                 className='btn btn-primary btn-sm'>Pay Now</button>
                                         </Link>

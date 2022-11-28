@@ -1,11 +1,14 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useState } from 'react';
+import toast from 'react-hot-toast';
+import ConfirmationModal from '../../Shared/ConfirmationModal/ConfirmationModal';
+import Loading from '../../Shared/Loading/Loading';
 
 const MyProducts = () => {
-    const [deletingDoctor, setDeletingDoctor] = useState(null);
+    const [deletingProduct, setDeletingProduct] = useState(null);
 
     const closeModal = () => {
-        setDeletingDoctor(null);
+        setDeletingProduct(null);
     }
     const { data: addProducts, isLoading, refetch } = useQuery({
         queryKey: ['doctors'],
@@ -24,6 +27,31 @@ const MyProducts = () => {
             }
         }
     });
+
+    const handleDeleteProduct = product => {
+        console.log(product);
+        fetch(`http://localhost:5000/addproduct/${product._id}`, {
+            method: 'DELETE',
+            headers: {
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.deletedCount > 0) {
+                    refetch();
+                    toast.success(`Product ${product.name} deleted successfully`)
+                }
+            })
+    }
+
+    const handleAvailable = available => {
+
+    }
+
+    if (isLoading) {
+        return <Loading></Loading>
+    }
     return (
         <div>
             <h2 className="text-3xl">My Products</h2>
@@ -39,7 +67,7 @@ const MyProducts = () => {
                             <th>Phone</th>
                             <th>Location</th>
                             <th>Category</th>
-                            <th>Description</th>
+                            <th>Role</th>
                             <th>Use</th>
                             <th>Action</th>
                         </tr>
@@ -59,28 +87,34 @@ const MyProducts = () => {
                                 <td>{product.phone}</td>
                                 <td>{product.location}</td>
                                 <td>{product.category}</td>
-                                <td>{product.description}</td>
+                                <td>{
+                                    (product?.role === 'available')
+                                        ?
+                                        <button className='btn btn-primary btn-sm'>Advertise</button>
+                                        :
+                                        <button onClick={() => handleAvailable(product)} className='btn btn-xs btn-primary'>Available</button>}</td>
+
                                 <td>{product.use}</td>
-                                
+
                                 <td>
-                                    <label onClick={() => setDeletingDoctor(product)} htmlFor="confirmation-modal" className="btn btn-sm btn-error">Delete</label>
+                                    <label onClick={() => setDeletingProduct(product)} htmlFor="confirmation-modal" className="btn btn-sm btn-error">Delete</label>
                                 </td>
                             </tr>)
                         }
                     </tbody>
                 </table>
             </div>
-            {/* {
-                deletingDoctor && <ConfirmationModal
+            {
+                deletingProduct && <ConfirmationModal
                     title={`Are you sure you want to delete?`}
-                    message={`If you delete ${deletingDoctor.name}. It cannot be undo`}
-                    successAction={handleDeleteDoctor}
+                    message={`If you delete ${deletingProduct.name}. It cannot be undo`}
+                    successAction={handleDeleteProduct}
                     successButtonName="Delete"
-                    modalData={deletingDoctor}
+                    modalData={deletingProduct}
                     closeModal={closeModal}
                 >
                 </ConfirmationModal>
-            } */}
+            }
         </div>
     );
 };

@@ -3,11 +3,39 @@ import React, { useContext } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthProvider';
 import useAdmin from '../hooks/useAdmin';
+import useBuyer from '../hooks/useBuyer';
 import Navbar from '../Pages/Shared/Navbar/Navbar';
 
 const DashboardLayout = () => {
     const { user } = useContext(AuthContext);
     const [isAdmin] = useAdmin(user?.email);
+    const [isBuyer] = useBuyer(user?.email);
+    const [isSeller] = useBuyer(user?.email);
+
+    console.log(isSeller);
+
+
+    // if(isAdmin === true){
+    //     menu = <>
+    //     <li><Link to="/dashboard">My Orders</Link></li>
+    //     <li><Link to="/dashboard/addproduct">Add a Product</Link></li>
+    //     <li><Link to="/dashboard/myproduct">My Product</Link></li>
+    //     </>
+    // }
+    // if (isBuyer === true && user?.uid) {
+    //      menu =<><li><Link to="/dashboard">My Orders</Link></li></>
+
+    // } 
+    // if(isSeller === true){
+    //     menu = <>
+    //     <li><Link to="/dashboard/addproduct">Add a Product</Link></li>
+    //     <li><Link to="/dashboard/myproduct">My Product</Link></li>
+    //     </>
+    // }
+
+    // else {
+    //   loginButton = <LoginButton />;
+    // }
 
     return (
         <div>
@@ -22,21 +50,18 @@ const DashboardLayout = () => {
                 <div className="drawer-side">
                     <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
                     <ul className="menu p-4 w-80 text-base-content">
-                       
-                        
-                        <li><Link to="/dashboard">My Orders</Link></li>
+                    
+                        {user?.isBuyer || user?.uid && <li><Link to="/dashboard">My Order</Link></li>}
                         {
-                            //  isAdmin && 
-                            <>
-                                <li><Link to="/dashboard/addproduct">Add a Product</Link></li>
+                            isAdmin && <>                                
+                                <li><Link to="/dashboard/addproduct">Add A Product</Link></li>
                                 <li><Link to="/dashboard/myproduct">My Product</Link></li>
-                                {/* <li><Link to="/dashboard/managedoctors">Manage Doctors</Link></li> */}
                             </>
                         }
                     </ul>
 
                 </div>
-            </div>            
+            </div>
         </div>
     );
 };

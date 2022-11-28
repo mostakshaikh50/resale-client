@@ -20,7 +20,7 @@ const AddProduct = () => {
         }
     });
 
-    const handleAddProduct = data =>{
+    const handleAddProduct = data => {
 
         const product = {
             name: data.name,
@@ -29,28 +29,28 @@ const AddProduct = () => {
             phone: data.phone,
             location: data.location,
             category: data.category,
-            description: data.description,
+            role: data.role,
             use: data.use,
-            
+
         }
 
         // save doctors info to the database
         fetch('http://localhost:5000/addproduct', {
             method: 'POST',
             headers: {
-                'content-type' : 'application/json',
+                'content-type': 'application/json',
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
             },
             body: JSON.stringify(product)
         })
-        .then(res => res.json())
-        .then(result => {
-            console.log(result);
-            toast.success(`${data.name} is added successfully`);
-            navigate('/dashboard/myproduct');
-        })
+            .then(res => res.json())
+            .then(result => {
+                console.log(result);
+                toast.success(`${data.name} is added successfully`);
+                navigate('/dashboard/myproduct');
+            })
     }
-    
+
     return (
         <div className='w-96 p-7'>
             <h2 className='text-4xl'>Add A Product</h2>
@@ -89,12 +89,12 @@ const AddProduct = () => {
                         {...register("location")}
                         className="input input-bordered w-full max-w-xs" />
 
-                </div>                
+                </div>
                 <div className="form-control w-full max-w-xs">
                     <label className="label"><span className="label-text">Product Category</span></label>
                     <select
-                    {...register('category')}
-                    className="select input-bordered w-full max-w-xs">
+                        {...register('category')}
+                        className="select input-bordered w-full max-w-xs">
                         <option>Please select a Category</option>
                         {
                             productCategories?.map(category => <option
@@ -105,11 +105,14 @@ const AddProduct = () => {
                     </select>
                 </div>
                 <div className="form-control w-full max-w-xs">
-                    <label className="label"><span className="label-text">Description</span></label>
-                    <input type="text"
-                        {...register("description")}
-                        className="input input-bordered w-full max-w-xs" />
+                    <label className="label"> <span className="label-text">Role</span></label>
+                    <select
+                        {...register('role')}
+                        className="select input-bordered w-full max-w-xs">
+                        <option defaultValue={"Available"}>Available</option>
+                        <option>Sold</option>
 
+                    </select>
                 </div>
                 <div className="form-control w-full max-w-xs">
                     <label className="label"><span className="label-text">Use</span></label>
@@ -118,7 +121,7 @@ const AddProduct = () => {
                         className="input input-bordered w-full max-w-xs" />
 
                 </div>
-               
+
                 <input className='btn btn-accent w-full mt-4' value="Add Product" type="submit" />
             </form>
         </div>
